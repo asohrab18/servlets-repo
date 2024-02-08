@@ -1,0 +1,3 @@
+http://localhost:8000/WebXmlDemo/
+http://localhost:8000/WebXmlDemo/myLogin
+http://localhost:8000/WebXmlDemo/myReg
