@@ -4,15 +4,15 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Profile</title>
+<title>Home</title>
 </head>
 <body>
-	<h3>My Profile</h3>
+	<h3>My Home</h3>
 	<%
 	String username = (String) session.getAttribute("username");
 	%>
-	Welcome, <%=username%>!<br /><br />
-	<a href="home.jsp">Home</a> &nbsp;&nbsp;
+	<%=username%> is at home.<br /><br />
+	<a href="profile.jsp">Profile</a> &nbsp;&nbsp;
 	<a href="about-us.jsp">About Us</a> &nbsp;&nbsp;
 	<a href="logout">Log out</a>
 </body>
