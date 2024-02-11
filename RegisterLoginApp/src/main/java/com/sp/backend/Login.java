@@ -24,9 +24,11 @@ public class Login extends HttpServlet {
 		String password = req.getParameter("empPassword");
 		PrintWriter out = resp.getWriter();
 		resp.setContentType("text/html");
+		RequestDispatcher rd = null;
 		try {
 			Connection con = DBConnectionProvider.getConnection();
-			PreparedStatement ps = con.prepareStatement("SELECT * FROM registration WHERE email = ? AND password = ?");
+			String query = "SELECT * FROM registration WHERE email = ? AND password = ?";
+			PreparedStatement ps = con.prepareStatement(query);
 			ps.setString(1, email);
 			ps.setString(2, password);
 			ResultSet rs = ps.executeQuery();
@@ -34,18 +36,16 @@ public class Login extends HttpServlet {
 				HttpSession session = req.getSession();
 				session.setAttribute("username", rs.getString("name"));
 				out.println("<h3 style = 'color:green'>User logged-in successfully.</h3>");
-				RequestDispatcher rd = req.getRequestDispatcher("/profile.jsp");
-				rd.include(req, resp);
+				rd = req.getRequestDispatcher("/profile.jsp");
 			} else {
-				out.println("<h3 style = 'color:red'>Email id & password din not match.</h3>");
-				RequestDispatcher rd = req.getRequestDispatcher("/login.jsp");
-				rd.include(req, resp);
+				out.println("<h3 style = 'color:red'>Email id & password did not match.</h3>");
+				rd = req.getRequestDispatcher("/login.jsp");
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
 			out.println("<h3 style = 'color:red'>Exception occurred: " + e.getMessage() + "</h3>");
-			RequestDispatcher rd = req.getRequestDispatcher("/login.jsp");
-			rd.include(req, resp);
+			rd = req.getRequestDispatcher("/login.jsp");
 		}
+		rd.include(req, resp);
 	}
 }

@@ -24,10 +24,12 @@ public class Register extends HttpServlet {
 		String gender = req.getParameter("empGender");
 		String city = req.getParameter("empCity");
 		PrintWriter out = resp.getWriter();
+		resp.setContentType("text/html");
+		RequestDispatcher rd = req.getRequestDispatcher("/register.jsp");
 		try {
 			Connection con = DBConnectionProvider.getConnection();
-			PreparedStatement ps = con.prepareStatement(
-					"Insert into registration (name, email, password, gender, city) values(?,?,?,?,?)");
+			String query = "Insert into registration (name, email, password, gender, city) values(?,?,?,?,?)";
+			PreparedStatement ps = con.prepareStatement(query);
 			ps.setString(1, name);
 			ps.setString(2, email);
 			ps.setString(3, password);
@@ -35,22 +37,14 @@ public class Register extends HttpServlet {
 			ps.setString(5, city);
 			int count = ps.executeUpdate();
 			if (count > 0) {
-				resp.setContentType("text/html");
 				out.println("<h3 style = 'color:green'>User registered successfully.</h3>");
-				RequestDispatcher rd = req.getRequestDispatcher("/register.jsp");
-				rd.include(req, resp);
 			} else {
-				resp.setContentType("text/html");
 				out.println("<h3 style = 'color:red'>User not registered due to some error.</h3>");
-				RequestDispatcher rd = req.getRequestDispatcher("/register.jsp");
-				rd.include(req, resp);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
-			resp.setContentType("text/html");
 			out.println("<h3 style = 'color:red'>Exception occurred: " + e.getMessage() + "</h3>");
-			RequestDispatcher rd = req.getRequestDispatcher("/register.jsp");
-			rd.include(req, resp);
 		}
+		rd.include(req, resp);
 	}
 }
