@@ -10,6 +10,7 @@
 <body>
 <c:set var="myName" value='<%= request.getParameter("username") %>' />
 <c:set var="myEmail" value='<%= request.getParameter("email") %>' />
+<c:set var="i" value='<%= request.getParameter("num") %>' />
 <h3>${myEmail}</h3>
 <p>Welcome,  ${myName}</p>
 <p>Hello,  ${myName}</p>
@@ -18,5 +19,12 @@
 <p>Hello,  ${myName}</p>
 <p>Hello,  ${myName}</p>
 <h3>${myEmail}</h3>
+<hr>
+<p>Number = ${i}</p>
+<p>(Number + 10) = ${i + 10}</p>
+<p>(Number - 10) = ${i - 10}</p>
+<p>(Number * 10) = ${i * 10}</p>
+<p>(Number / 10) = ${i / 10}</p>
+<p>(Number % 10) = ${i % 10}</p>
 </body>
 </html>

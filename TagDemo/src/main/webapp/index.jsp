@@ -10,6 +10,7 @@
 	<form action="display.jsp">
 		<input type="text" name="username" placeholder="Enter Name" /><br/><br/>
 		<input type="text" name="email" placeholder="Enter Email" /><br/><br/>
+		<input type="number" name="num" placeholder="Enter a number" /><br/><br/>
 		<input type="submit" value="GO" />
 	</form>
 </body>
