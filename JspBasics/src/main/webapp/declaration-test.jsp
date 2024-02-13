@@ -8,9 +8,11 @@
 </head>
 <body>
 	<h3>JSP Declaration</h3>
-	<%!String changeToLowerCase(String input) {
+	<%!
+	String changeToLowerCase(String input) {
 		return input.toLowerCase();
-	}%>
+	}
+	%>
 
 	Lower case of 'HELLO WORLD' is: '<%= changeToLowerCase("HELLO WORLD")%>'
 
