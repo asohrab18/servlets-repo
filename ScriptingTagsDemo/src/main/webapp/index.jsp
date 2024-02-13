@@ -7,17 +7,19 @@
 <title>Scripting Tags</title>
 </head>
 <body>
-	<%!int a = 10;
+	<%!
+	int a = 10;
 	String name = "Sohrab Alam";
 
 	int square() {
 		return a * a;
-	}%>
+	}
+	%>
 
 	<%
 	out.println("a = " + a);
 	out.println("<br/>Name: " + name);
-	out.println("<br/>square of " + a + " = " + +square());
+	out.println("<br/>square of " + a + " = " + square());
 
 	int b = 20;
 	if (b < 100) {
