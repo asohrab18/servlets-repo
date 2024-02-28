@@ -10,6 +10,12 @@ public class Student {
 	public Student() {
 	}
 
+	public Student(String firstName, String lastName, String email) {
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.email = email;
+	}
+
 	public Student(Integer id, String firstName, String lastName, String email) {
 		super();
 		this.id = id;
