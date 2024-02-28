@@ -19,6 +19,20 @@ public class StudentDbUtil {
 	public StudentDbUtil(DataSource dataSource) {
 		this.dataSource = dataSource;
 	}
+	
+	public void deleteStudent(Integer id) throws Exception {
+		Connection con = null;
+		PreparedStatement ps = null;
+		try {
+			con = dataSource.getConnection();
+			String sql = "DELETE FROM student WHERE id = ?";
+			ps = con.prepareStatement(sql);
+			ps.setInt(1, id);
+			ps.execute();
+		} finally {
+			close(con, ps, null);
+		}
+	}
 
 	public void updateStudent(Student student) throws Exception {
 		Connection con = null;
